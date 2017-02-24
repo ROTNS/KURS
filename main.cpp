@@ -1,7 +1,11 @@
 ﻿//1 commit
 //2 commit
 //Pull commit
+<<<<<<< HEAD
 //3 commit
+=======
+//Merge commit
+>>>>>>> dev
 #include <SFML/Graphics.hpp>
 #include <time.h>
 #include <iostream>
