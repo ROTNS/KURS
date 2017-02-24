@@ -1,5 +1,6 @@
 //1 commit
 //2 commit
+//Pull commit
 #include <SFML/Graphics.hpp>
 #include <time.h>
 #include <iostream>
@@ -59,7 +60,7 @@ bool startgame(){
 	Clock clock;
 	Clock gameTimeClock;
 	int gameTime = 0;
-	//Заполнение случайными элементами
+	//Г‡Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ ГЅГ«ГҐГ¬ГҐГ­ГІГ Г¬ГЁ
 	for (int i = 1; i <= 8; i++)
 	for (int j = 1; j <= 8; j++)
 	{
@@ -89,12 +90,12 @@ bool startgame(){
 				{
 							 char buff[100];
 							 ifstream Save("save.txt");
-							 lasttime.setString(L"Последнее\nвремя\n");
+							 lasttime.setString(L"ГЏГ®Г±Г«ГҐГ¤Г­ГҐГҐ\nГўГ°ГҐГ¬Гї\n");
 							 lasttime.setPosition(500, 100);
 							 Save.getline(buff, 50);
 							 rec.setString(buff);
 							 rec.setPosition(500, 170);
-							 rule.setString(L"Нажатием на  ЛКМ выберите\n элемент. Также выберите\n элемент стоящий рядом.\nВаша задача составить три\n или больше элементов в ряд\nУдачной игры ");
+							 rule.setString(L"ГЌГ Г¦Г ГІГЁГҐГ¬ Г­Г   Г‹ГЉГЊ ГўГ»ГЎГҐГ°ГЁГІГҐ\n ГЅГ«ГҐГ¬ГҐГ­ГІ. Г’Г ГЄГ¦ГҐ ГўГ»ГЎГҐГ°ГЁГІГҐ\n ГЅГ«ГҐГ¬ГҐГ­ГІ Г±ГІГ®ГїГ№ГЁГ© Г°ГїГ¤Г®Г¬.\nГ‚Г ГёГ  Г§Г Г¤Г Г·Г  Г±Г®Г±ГІГ ГўГЁГІГј ГІГ°ГЁ\n ГЁГ«ГЁ ГЎГ®Г«ГјГёГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў Гў Г°ГїГ¤\nГ“Г¤Г Г·Г­Г®Г© ГЁГЈГ°Г» ");
 							 rule.setPosition(45,20);
 							 rules.setPosition(0, 0);
 							 zap = false;
@@ -124,7 +125,7 @@ bool startgame(){
 			}
 		}
 
-		//Мышь
+		//ГЊГ»ГёГј
 		if (click == 1)
 		{
 			x0 = pos.x / ts + 1;
@@ -144,7 +145,7 @@ bool startgame(){
 			}
 		}
 
-		//Поиск совпадений
+		//ГЏГ®ГЁГ±ГЄ Г±Г®ГўГЇГ Г¤ГҐГ­ГЁГ©
 		for (int i = 1; i <= 8; i++)
 		for (int j = 1; j <= 8; j++)
 		{
@@ -155,7 +156,7 @@ bool startgame(){
 			if (grid[i][j].kind == grid[i][j - 1].kind)
 			for (int n = -1; n <= 1; n++) grid[i][j + n].match++;
 		}
-		//Анимация
+		//ГЂГ­ГЁГ¬Г Г¶ГЁГї
 		isMoving = false;
 		for (int i = 1; i <= 8; i++)
 		for (int j = 1; j <= 8; j++)
@@ -172,7 +173,7 @@ bool startgame(){
 			if (dx || dy) isMoving = 1;
 		}
 
-		//Возврат эл-та обратно
+		//Г‚Г®Г§ГўГ°Г ГІ ГЅГ«-ГІГ  Г®ГЎГ°Г ГІГ­Г®
 		int score = 0;
 		for (int i = 1; i <= 8; i++)
 		for (int j = 1; j <= 8; j++)
@@ -182,7 +183,7 @@ bool startgame(){
 			if (!score) swap(grid[y0][x0], grid[y][x]); isSwap = 0;
 		}
 
-		//Обновление поля
+		//ГЋГЎГ­Г®ГўГ«ГҐГ­ГЁГҐ ГЇГ®Г«Гї
 		if (!isMoving)
 		{
 			for (int i = 8; i > 0; i--)
@@ -201,11 +202,11 @@ bool startgame(){
 			}
 		}
 		app.draw(background);
-		help.setString(L"ПКМ-Правила\nСКМ-Запись\nR-Рестарт");
+		help.setString(L"ГЏГЉГЊ-ГЏГ°Г ГўГЁГ«Г \nГ‘ГЉГЊ-Г‡Г ГЇГЁГ±Гј\nR-ГђГҐГ±ГІГ Г°ГІ");
 		help.setPosition(500, 200);
 		ostringstream gameTimeString;
 		gameTimeString << gameTime;
-		text.setString(L"Время игры \n" + gameTimeString.str());
+		text.setString(L"Г‚Г°ГҐГ¬Гї ГЁГЈГ°Г» \n" + gameTimeString.str());
 		text.setPosition(500, 50);
 		app.draw(help);
 		app.draw(text);
